@@ -22,7 +22,7 @@ public class GestionAforoController {
     private Aforo aforo;
 
     public void initialize(){
-        rootVBox.setStyle("-fx-background-color: #F0E68C;");
+        rootVBox.setStyle("-fx-background-color: #C0C0C0;");
         aforo = new Aforo();
         numeroEntrada.textProperty().addListener((observable, oldValue, newValue) -> {
             buttonInicializarAforo.setDisable(newValue.trim().isEmpty() || !isNumeric(newValue) );
@@ -49,20 +49,16 @@ public class GestionAforoController {
         aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
         entraButton.setDisable(false);
 
-
-
     }
 
     public void onEntraButtonClick(ActionEvent actionEvent) {
         saleButton.setDisable(false);
         aforo.entra();
-
         aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
         alertar();
         if (aforo.getAforoActual()>=aforo.getAforoMaximo()){
             entraButton.setDisable(true);
         }
-
 
     }
 
@@ -70,11 +66,13 @@ public class GestionAforoController {
         float num = 0.85F;
         int umbral = Math.round(aforo.getAforoMaximo()*num);
         if (aforo.getAforoActual()>=umbral){
-            aforoActualL.setTextFill(Color.RED);
-            aforoMaximoL.setTextFill(Color.RED);
+            aforoActualL.setStyle("-fx-text-fill: #FF0000;-fx-font-weight: bold;-fx-font-size: 15px;-fx-font-size: 50px;");
+            aforoMaximoL.setStyle("-fx-text-fill: #FF0000;-fx-font-weight: bold;-fx-font-size: 50px;");
+
         }else {
-            aforoActualL.setTextFill(Color.BLACK);
-            aforoMaximoL.setTextFill(Color.BLACK);
+            aforoActualL.setStyle("-fx-text-fill: #000000;-fx-font-weight:normal;-fx-font-size: 15px;-fx-font-size: 50px;");
+            aforoMaximoL.setStyle("-fx-text-fill: #000000;-fx-font-weight:normal;-fx-font-size: 50px;");
+
         }
     }
 
