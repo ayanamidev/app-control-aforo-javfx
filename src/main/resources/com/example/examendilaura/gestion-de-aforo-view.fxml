@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
-<VBox alignment="CENTER" spacing="150" xmlns:fx="http://javafx.com/fxml"
+<VBox fx:id="rootVBox" alignment="CENTER" spacing="150" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.examendilaura.GestionAforoController">
   <HBox alignment="TOP_CENTER" spacing="30">
     <Label text="Número de plazas: "/>
@@ -15,18 +15,20 @@
     <Button fx:id="buttonInicializarAforo" onAction="#onInicializarAforoButtonClick" text="Inicializar aforo"/>
   </HBox>
   <HBox alignment="CENTER" spacing="200">
-    <VBox>
-      <Label  text="Aforo actual"/>
-      <Label fx:id="aforoActualL" text="aforoactual"/>
+    <VBox alignment="CENTER">
+      <Label text="Aforo actual"/>
+      <Label fx:id="aforoActualL" text="0"/>
     </VBox>
-    <VBox>
+    <VBox alignment="CENTER">
       <Label  text="Aforo máximo"/>
-      <Label fx:id="aforoMaximoL" text="aforomáximo"/>
+      <Label fx:id="aforoMaximoL" text="0"/>
     </VBox>
   </HBox>
   <HBox alignment="CENTER" spacing="200">
-    <Button fx:id="entraButton" onAction="#onEntraButtonClick" text="Entra" disable="true"/>
-    <Button fx:id="saleButton" onAction="#onSaleButtonClick" text="Sale" disable="true"/>
+    <Button fx:id="entraButton" onAction="#onEntraButtonClick" text="Entra" disable="true"
+            prefWidth="200" prefHeight="60" style="-fx-font-size: 18px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5px; -fx-background-radius: 5px;"/>
+    <Button fx:id="saleButton" onAction="#onSaleButtonClick" text="Sale" disable="true"
+            prefWidth="200" prefHeight="60" style="-fx-font-size: 18px; -fx-background-color: #FF0000; -fx-text-fill: white; -fx-border-radius: 5px; -fx-background-radius: 5px;"/>
   </HBox>
 
 

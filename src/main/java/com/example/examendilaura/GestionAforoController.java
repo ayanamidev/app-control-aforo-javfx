@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class GestionAforoController {
 
@@ -15,9 +17,12 @@ public class GestionAforoController {
     public Button buttonInicializarAforo;
     public Button entraButton;
     public Button saleButton;
+    public VBox rootVBox;
+    public Label labelAforoActual;
     private Aforo aforo;
 
     public void initialize(){
+        rootVBox.setStyle("-fx-background-color: #F0E68C;");
         aforo = new Aforo();
         numeroEntrada.textProperty().addListener((observable, oldValue, newValue) -> {
             buttonInicializarAforo.setDisable(newValue.trim().isEmpty() || !isNumeric(newValue) );
@@ -51,20 +56,37 @@ public class GestionAforoController {
     public void onEntraButtonClick(ActionEvent actionEvent) {
         saleButton.setDisable(false);
         aforo.entra();
+
         aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
+        alertar();
         if (aforo.getAforoActual()>=aforo.getAforoMaximo()){
             entraButton.setDisable(true);
         }
 
+
+    }
+
+    private void alertar() {
+        float num = 0.85F;
+        int umbral = Math.round(aforo.getAforoMaximo()*num);
+        if (aforo.getAforoActual()>=umbral){
+            aforoActualL.setTextFill(Color.RED);
+            aforoMaximoL.setTextFill(Color.RED);
+        }else {
+            aforoActualL.setTextFill(Color.BLACK);
+            aforoMaximoL.setTextFill(Color.BLACK);
+        }
     }
 
     public void onSaleButtonClick(ActionEvent actionEvent) {
         entraButton.setDisable(false);
         aforo.sale();
         aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
+        alertar();
         if (aforo.getAforoActual()<=0){
             saleButton.setDisable(true);
         }
+
 
     }
 }
