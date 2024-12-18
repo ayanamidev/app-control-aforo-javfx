@@ -1,13 +1,12 @@
 package com.example.examendilaura;
 
 public class Aforo {
-    private int aforoActual;
+    private int aforoActual=0;
     private int aforoMaximo;
 
 
     public void setAforoMaximo(int aforoMaximo) {
         this.aforoMaximo = aforoMaximo;
-        this.aforoActual = aforoMaximo;
     }
 
     public int getAforoActual() {
@@ -19,5 +18,14 @@ public class Aforo {
     }
     public boolean esNumeroValido(int  numero) {
         return numero > 0 ;
+    }
+
+    public void entra() {
+        aforoActual++;
+
+    }
+
+    public void sale() {
+        aforoActual--;
     }
 }

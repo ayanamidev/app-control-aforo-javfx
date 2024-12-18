@@ -13,6 +13,8 @@ public class GestionAforoController {
     public Label aforoMaximoL;
     public Label aforoActualL;
     public Button buttonInicializarAforo;
+    public Button entraButton;
+    public Button saleButton;
     private Aforo aforo;
 
     public void initialize(){
@@ -33,17 +35,36 @@ public class GestionAforoController {
     }
 
     public void onInicializarAforoButtonClick(ActionEvent actionEvent) {
+        aforo = new Aforo();
         int aforoMaximo = Integer.parseInt(numeroEntrada.getText());
         numeroEntrada.clear();
         numeroEntrada.setPromptText(String.valueOf(aforoMaximo));
         aforo.setAforoMaximo(aforoMaximo);
         aforoMaximoL.setText(String.valueOf(aforo.getAforoMaximo()));
         aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
+        entraButton.setDisable(false);
+
+
 
     }
 
     public void onEntraButtonClick(ActionEvent actionEvent) {
+        saleButton.setDisable(false);
+        aforo.entra();
+        aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
+        if (aforo.getAforoActual()>=aforo.getAforoMaximo()){
+            entraButton.setDisable(true);
+        }
 
+    }
+
+    public void onSaleButtonClick(ActionEvent actionEvent) {
+        entraButton.setDisable(false);
+        aforo.sale();
+        aforoActualL.setText(String.valueOf(aforo.getAforoActual()));
+        if (aforo.getAforoActual()<=0){
+            saleButton.setDisable(true);
+        }
 
     }
 }

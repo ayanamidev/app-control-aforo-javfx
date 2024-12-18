@@ -16,7 +16,7 @@
   </HBox>
   <HBox alignment="CENTER" spacing="200">
     <VBox>
-      <Label text="Aforo actual"/>
+      <Label  text="Aforo actual"/>
       <Label fx:id="aforoActualL" text="aforoactual"/>
     </VBox>
     <VBox>
@@ -25,8 +25,8 @@
     </VBox>
   </HBox>
   <HBox alignment="CENTER" spacing="200">
-    <Button onAction="#onEntraButtonClick" text="Entra" disable="true"/>
-    <Button text="Sale" disable="true"/>
+    <Button fx:id="entraButton" onAction="#onEntraButtonClick" text="Entra" disable="true"/>
+    <Button fx:id="saleButton" onAction="#onSaleButtonClick" text="Sale" disable="true"/>
   </HBox>
 
 
