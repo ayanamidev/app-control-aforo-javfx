@@ -17,4 +17,7 @@ public class Aforo {
     public int getAforoMaximo() {
         return aforoMaximo;
     }
+    public boolean esNumeroValido(int  numero) {
+        return numero > 0 ;
+    }
 }
