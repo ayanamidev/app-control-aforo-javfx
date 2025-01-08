@@ -24,6 +24,7 @@ public class GestionAforoController {
     public void initialize(){
         rootVBox.setStyle("-fx-background-color: #C0C0C0;");
         aforo = new Aforo();
+        buttonInicializarAforo.setDisable(true);
         numeroEntrada.textProperty().addListener((observable, oldValue, newValue) -> {
             buttonInicializarAforo.setDisable(newValue.trim().isEmpty() || !isNumeric(newValue) );
         });
